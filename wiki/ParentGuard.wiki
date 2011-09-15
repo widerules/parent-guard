@@ -1,24 +1,31 @@
-#summary One-sentence summary of this page.
 #labels Phase-Requirements
+# The feature list of parent guard
 
 = Objective =
 
 Guard your phone and your child from misbehaving, by restricting the phones use. A classic example would be a woman who found out that she had to pay a $500.00 bill to her phone company because her child with an Android phone went app crazy and got everything she could. Or lending the phone out to someone, they can’t read your texts, emails or change your language on you as a prank, also letting you see what exactly they did. 
 
 = Features =
-
+  == Major Features (sorted by priority) ==
+  * Retrieve the list of installed apps.
+  * Allow Parent user to set privileges; Parent user can classify installed apps into blocked or non-blocked apps to child(ren).
+  * A setting page in which Parent user can change preferences according to his need. e.g. no games after 8:00 PM.
+  * Block select applications from execution (ie. E-mail, social networking sites, contacts, etc.). If this can not be done, send an alert to Parent-defined Email (or whatever device) when unauthorized apps are launched.
+  * Keep a log of what happens on the phone while Child Mode is active.
   * Allow Parent user to find acceptable apps for a given age group via a recomendations database.
-  * Allow Parent user to set rules for smartphone usage pertaining to time (ie. no games after 8:00 PM).
+
+  == Minor Features (also sorted by priority) ==
+  * Allow Parent user to set rules for smartphone usage pertaining to time (ie. no games after 8:00 PM, cannot play games more than 2 hrs per day).
+  * Allow parents to install on Child(ren)’s phone(s) to monitor activity and location.
+  * Prevent the user from rooting the phone/device.
   * Lock phone from installing new applications.
   * Block selected websites according to user preference.
-  * Block select applications from execution (ie. E-mail, social networking sites, contacts, etc.).
-  * Keep a log of what happens on the phone while Child Mode is active.
-  * Send GPS data to E-mail or server automatically, according to user preference.
-  * Allow parents to install on Child(ren)’s phone(s) to monitor activity and location.
-  * Notify authorities when Parent chooses to, phone will automatically upload GPS data.
+  * Send logged data to E-mail or server automatically, according to user preference.
   * Keep track of text messages for Parent to monitor their child(ren).
-  * Prevent the user from rooting the phone/device.
+  * Notify authorities when Parent chooses to, phone will automatically upload GPS data. 
   * Export maps of user travel, and upload to a server or E-mail to a parent.
   * If the user is just lending out the phone to someone, restrict its use for just phone calls.
   * Don’t let E-mail, or text messages show up, etc. Any personal information is hidden. 
   * Hide the app from showing up in the app list.
+
+Note: The feasibility of these features still need to be further investigated.
