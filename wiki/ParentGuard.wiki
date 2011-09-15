@@ -28,4 +28,4 @@ Guard your phone and your child from misbehaving, by restricting the phones use.
   * Don’t let E-mail, or text messages show up, etc. Any personal information is hidden. 
   * Hide the app from showing up in the app list.
 
-Note: The feasibility of these features still need to be further investigated.
+Note: The feasibility of these features still need to be further investigated..
