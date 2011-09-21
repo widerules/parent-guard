@@ -1,5 +1,11 @@
-== PGS01 Database ==
+  * PGS01 communicate with the database
+    * PGS0101 read recommended applications according to given conditions
+    * PGS0102 record constrained applications, launch rules of admitted applications, and the information of constrained users
 
-== PGS02 Recommendation Engine ==
+  * PGS02 recommendation engine
+    * PGS0201 retrieve most popular admitted applications according to given conditions
+    * PGS0202 recommend admitted applications used by similar constrained users
 
-== PGS03 Communication ==
+  * PGS03 communication with the client
+    * PGS0301 handle HTTP requests from the client
+    * PGS0302 record signature of HTTP requests
