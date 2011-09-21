@@ -1,27 +1,30 @@
-== PGC01 User Interface ==
-Design and implement the user interface
-  === PGC0101 Guarded Application List Maintainer ===
-  === PGC0102 Guarding Rule Maintainer ===
-  === PGC0102 Tutorial ===
+Client Backlog
 
-== PGC02 Communication ==
-  === PGC0201 HTTP Handling ===
-  === PGC0202 Request Signature ===
+  * PGC01 maintain the launch permit of installed applications
+    * PGC0101 decide which applications are free to constrained users
+    * PGC0102 maintain launch rules of those admitted applications
 
-== PGC03 Preference ==
-  === PGC0301 Parent Guard Preference Page ===
-  === PGC0302 Preference Maintainer ===
+  * PGC02 communicate with the server
+    * PGC0201 perform HTTP requests to exchange data with the server
+    * PGC0202 add signature to HTTP requests for the purpose of security and version control
 
-== PGC04 Locker ==
-  === PGC0401 Application Locking ===
-  === PGC0402 Password Verification ===
+  * PGC03 user preferences
+    * PGC0301 allow administrator users to change their password or pattern
+    * PGC0302 implement a tutorial for the first launch of Parent Guard
+    * PGC0303 change the running mode of Parent Guard
 
-== PGC05 Watcher ==
-  === PGC0501 Log Reading ===
-  === PGC0502 Launch Event Capturing ===
+  * PGC04 lock the application being launched
+    * PGC0401 lock the application being launched
+    * PGC0402 show a prompted alert dialog when the application is prohibited
+    * PGC0403 always lock those applications with the capability of killing or stopping Parent Guard
 
-== PGC06 Content ==
-  === PGC0601 Application Content Retriever ===
+  * PGC05 periodically detect the launching event of applications 
+    * PGC0501 periodically read the system log
+    * PGC0502 capture the launching event and notify the locker module to handle it
 
-== PGC07 Utility ==
-  === PGC0701 Utility Methods Testing===
+  * PGC06 retrieve the content of installed applications
+    * PGC0601 retrieve the content of installed applications
+    * PGC0602 find the dangerous applications which can kill or stop Parent Guard
+
+  * PGC07 provide methods to support all the other modules
+    * PGC0701 identify the application being launched from captured system log
