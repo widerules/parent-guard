@@ -18,6 +18,25 @@ public class AndroidAsset {
     mIsProhibited = false;
   }
   
+  public AndroidAsset() {
+    mActivityName = "";
+    mPackageName = "";
+    mLabel = "";
+    mIcon = null;
+    mIsProhibited = false;
+  }
+  
+  public void setComponent(String pActivityName, String pPackageName) {
+    mActivityName = pActivityName;
+    mPackageName = pPackageName;
+  }
+  
+  public void setLabelAndIcon(String pActivityName, String pPackageName, String pLabel,
+      Drawable pIcon) {
+    mLabel = pLabel;
+    mIcon = pIcon;
+  }
+  
   public void setProhibited(boolean pIsProhibited) {
     mIsProhibited = pIsProhibited;
   }
