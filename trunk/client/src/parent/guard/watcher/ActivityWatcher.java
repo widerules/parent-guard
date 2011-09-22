@@ -1,5 +1,6 @@
 package parent.guard.watcher;
 
+import parent.guard.model.AndroidAsset;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +11,7 @@ public class ActivityWatcher extends Service {
   private LogcatReader mLogcatReader;
   
   private OnActivityResumeListener mListener = new OnActivityResumeListener() {
-    public void onResume() {
+    public void onResume(AndroidAsset pAndroidAsset) {
     }
   };
 
@@ -23,7 +24,7 @@ public class ActivityWatcher extends Service {
   public void onCreate() {
     super.onCreate();
     mContext = getApplicationContext();
-    mLogcatReader = new LogcatReader(mContext, mListener);
+    mLogcatReader = new LogcatReader(mListener);
     mLogcatReader.start();
   }
 
@@ -31,6 +32,4 @@ public class ActivityWatcher extends Service {
   public void onDestroy() {
     super.onDestroy();
   }
-  
-  
 }

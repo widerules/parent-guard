@@ -4,22 +4,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import android.content.Context;
-import android.util.Log;
+import parent.guard.model.AndroidAsset;
+import parent.guard.utility.ComponentParser;
 
 public class LogcatReader extends Thread {
   private static final String LOGCAT_CLEAN = "logcat -c";
   private static final String LOGCAT_READ = "logcat -v raw ActivityManager:I *:S";
   private static final int BUFFER_SIZE = 1024;
   
-  private Context mContext;
   private Process mProcess;
   private OnActivityResumeListener mOnActivityResumeListener;
+  private AndroidAsset mAndroidAsset;
   
-  public LogcatReader(Context pContext,
-      OnActivityResumeListener pOnActivityResumeListener) {
-    mContext = pContext;
+  public LogcatReader(OnActivityResumeListener pOnActivityResumeListener) {
     mOnActivityResumeListener = pOnActivityResumeListener;
+    mAndroidAsset = new AndroidAsset();
   }
   
   public void run() {
@@ -30,16 +29,17 @@ public class LogcatReader extends Thread {
           mProcess.getInputStream()), BUFFER_SIZE);
       String tLineReader;
       while((tLineReader = tBufferedReader.readLine()) != null) {
-        if(tLineReader.startsWith("Starting activity: Intent { ")) {
-          int tIndexStart = tLineReader.indexOf("comp={");
-          int tIndexEnd = tLineReader.substring(tIndexStart).indexOf("{");
-          String tComponent = tLineReader.substring(tIndexStart, tIndexEnd);
-          mOnActivityResumeListener.onResume();
-        }
-        Log.d("++", tLineReader);
+        checkLaunchingEvent(tLineReader.trim());
       }
     } catch(IOException e) {
       e.printStackTrace();
+    }
+  }
+  
+  private synchronized void checkLaunchingEvent(String pComponent) {
+    ComponentParser tComponentParser = ComponentParser.getDefault();
+    if(tComponentParser.parser(pComponent, mAndroidAsset)) {
+      mOnActivityResumeListener.onResume(mAndroidAsset);
     }
   }
 }
