@@ -1,6 +1,6 @@
 #labels Phase-Requirements
   * PGS01 communicate with the database
-    * PGS0101 design the database and create the schema
+    * ~~PGS0101 design the database and create the schema~~
     * PGS0102 read recommended applications according to given conditions
     * PGS0103 record constrained applications, tagged with the age of constrained users
 
