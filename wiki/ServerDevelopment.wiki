@@ -3,6 +3,7 @@
     * ~~PGS0101 design the database and create the schema~~
     * PGS0102 read recommended applications according to given conditions
     * PGS0103 record constrained applications, tagged with the age of constrained users
+    * PGS0104 design protocols of transmission between client and server
 
   * PGS02 recommendation engine
     * PGS0201 retrieve most popular constrained applications according to the given age of constrained users
