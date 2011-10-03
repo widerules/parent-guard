@@ -9,13 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.Intent ;
 import android.content.pm.ResolveInfo ;
 
-/* Programmer: Drew Morrissey 
- * 
- * File: PackageDetector.java
- * 
- * Date: 9/27/2011  
- * 
- * Version 1.0 */
 
 public class PackageDetector {
 	
@@ -31,47 +24,49 @@ public class PackageDetector {
     	mPackageManager = mContext.getPackageManager();
     	mIntent = new Intent(Intent.ACTION_MAIN, null).addCategory(Intent.CATEGORY_LAUNCHER);
     	mResolveInfo = mPackageManager.queryIntentActivities( mIntent, PackageManager.PERMISSION_GRANTED );
-    	mMainApps = getInstalledApplications() ; 
+    	mMainApps = refreshInstalledApplications() ; 
 	
     }
     
-    /* Returns the list of ResolveInfo's */
+
     public List<ResolveInfo> getResolveInfo( ) {
 		
     	return mResolveInfo; 
     	
     }
-    /* Not needed but might be by other classes */
+
     public void setResolveInfo( Intent lIntent, int lFlag ){ 
     	
     	mResolveInfo = mPackageManager.queryIntentActivities( lIntent , lFlag ) ;
     }
     
-    /*This updates mMainApps every time it is called, 
-     * in case other applications were installed in time between last function call and the current*/
     
-    public List<AndroidAsset> getInstalledApplications( ) {
+  public List<AndroidAsset> refreshInstalledApplications() {
+    
+      List<AndroidAsset> lApps = new ArrayList<AndroidAsset>() ;
     	
-    	List<AndroidAsset> lApps = new ArrayList<AndroidAsset>() ;
-    	
-    	for( ResolveInfo lInfo : mResolveInfo ){ lApps.add( getAsset( lInfo ) ); }  
+    	for( ResolveInfo lInfo : mResolveInfo ){ lApps.add( getAndroidAsset( lInfo ) ); }  
     	 
     	mMainApps = lApps ;
     	
     	return mMainApps ;
+  
+  
+    }
+    
+    public List<AndroidAsset> getInstalledApplications( ) {
+    	
+    	return mMainApps ;
     	
     }
-    /*Utility to get all installed packages. May not needed. */
-    
+
     public List<PackageInfo> getInstalledPackages(int pFlag ) {
     	
     	return mPackageManager.getInstalledPackages( pFlag  );
     	
     }
     
-    
-    /*This method can be public or private just to make code look neater in the function above*/
-    public AndroidAsset getAsset( ResolveInfo pInfo ) {
+    public AndroidAsset getAndroidAsset( ResolveInfo pInfo ) {
     	
     	AndroidAsset lAsset = new AndroidAsset() ;
     	
@@ -85,6 +80,7 @@ public class PackageDetector {
     	return lAsset ;
     }
     
+    
     public PackageManager getPackageManager() {
 	
     	return mPackageManager;
@@ -93,24 +89,3 @@ public class PackageDetector {
     
     
 }
-
-  /*Old Code:*/
-/* package parent.guard.content;
-
-import android.content.Context;
-import android.content.pm.PackageManager;
-
-public class PackageDetector {
-  private Context mContext;
-  private PackageManager mPackageManager;
-  
-  public PackageDetector(Context pContext) {
-    mContext = pContext;
-    mPackageManager = mContext.getPackageManager();
-  }
-  
-  public PackageManager getPackageManager() {
-    return mPackageManager;
-  }
-}
-*/
