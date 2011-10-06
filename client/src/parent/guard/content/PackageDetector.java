@@ -45,7 +45,19 @@ public class PackageDetector {
     
       List<AndroidAsset> lApps = new ArrayList<AndroidAsset>() ;
     	
-    	for( ResolveInfo lInfo : mResolveInfo ){ lApps.add( getAndroidAsset( lInfo ) ); }  
+    	for( ResolveInfo lInfo : mResolveInfo ){ 
+       
+       AndroidAsset lAsset = new AndroidAsset() ;
+    	
+       lAsset.setComponent( lInfo.activityInfo.name , lInfo.activityInfo.packageName );
+       
+       lAsset.setLabelAndIcon( lInfo.activityInfo.name, lInfo.activityInfo.packageName, 
+                               lInfo.loadLabel(mPackageManager).toString() , lInfo.loadIcon(mPackageManager) ) ;
+       
+       lApps.add( lAsset ); 
+       
+       
+       }  
     	 
     	mMainApps = lApps ;
     	
@@ -66,19 +78,6 @@ public class PackageDetector {
     	
     }
     
-    public AndroidAsset getAndroidAsset( ResolveInfo pInfo ) {
-    	
-    	AndroidAsset lAsset = new AndroidAsset() ;
-    	
-    	lAsset.setComponent( pInfo.activityInfo.name , pInfo.activityInfo.packageName );
-    	lAsset.setLabelAndIcon(
-    			pInfo.activityInfo.name, 
-    			pInfo.activityInfo.packageName, 
-    			pInfo.loadLabel(mPackageManager).toString() , 
-    			pInfo.loadIcon(mPackageManager )) ;
-    	
-    	return lAsset ;
-    }
     
     
     public PackageManager getPackageManager() {
