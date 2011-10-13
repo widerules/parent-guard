@@ -1,6 +1,6 @@
 package parent.guard.content;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import parent.guard.model.AndroidAsset;
 import android.content.Context;
@@ -15,7 +15,7 @@ public class PackageDetector {
   private Context mContext;
   private PackageManager mPackageManager;
   private List<ResolveInfo> mResolveInfo ;
-  private List<AndroidAsset> mMainApps ;
+  
   private Intent mIntent ;
   
     public PackageDetector(Context pContext) {
@@ -24,51 +24,37 @@ public class PackageDetector {
     	mPackageManager = mContext.getPackageManager();
     	mIntent = new Intent(Intent.ACTION_MAIN, null).addCategory(Intent.CATEGORY_LAUNCHER);
     	mResolveInfo = mPackageManager.queryIntentActivities( mIntent, PackageManager.PERMISSION_GRANTED );
-    	mMainApps = refreshInstalledApplications() ; 
+    	 
 	
     }
-    
 
-    public List<ResolveInfo> getResolveInfo( ) {
-		
-    	return mResolveInfo; 
-    	
-    }
-
-    public void setResolveInfo( Intent lIntent, int lFlag ){ 
-    	
-    	mResolveInfo = mPackageManager.queryIntentActivities( lIntent , lFlag ) ;
-    }
+    public List<AndroidAsset> refreshInstalledApplications( List<AndroidAsset> pApps ) {
     
-    
-  public List<AndroidAsset> refreshInstalledApplications() {
-    
-      List<AndroidAsset> lApps = new ArrayList<AndroidAsset>() ;
+      pApps.clear() ;
     	
     	for( ResolveInfo lInfo : mResolveInfo ){ 
        
-       AndroidAsset lAsset = new AndroidAsset() ;
+	    AndroidAsset lAsset = new AndroidAsset() ;
     	
-       lAsset.setComponent( lInfo.activityInfo.name , lInfo.activityInfo.packageName );
+	    lAsset.setComponent( lInfo.activityInfo.name , lInfo.activityInfo.packageName );
        
-       lAsset.setLabelAndIcon( lInfo.activityInfo.name, lInfo.activityInfo.packageName, 
-                               lInfo.loadLabel(mPackageManager).toString() , lInfo.loadIcon(mPackageManager) ) ;
+	    lAsset.setLabelAndIcon( lInfo.activityInfo.name, lInfo.activityInfo.packageName, 
+				    lInfo.loadLabel(mPackageManager).toString() , lInfo.loadIcon(mPackageManager) ) ;
        
-       lApps.add( lAsset ); 
+	    pApps.add( lAsset ); 
        
        
        }  
     	 
-    	mMainApps = lApps ;
     	
-    	return mMainApps ;
+    	return pApps ;
   
   
     }
     
-    public List<AndroidAsset> getInstalledApplications( ) {
+    public List<AndroidAsset> getInstalledApplications( List<AndroidAsset> pApps ) {
     	
-    	return mMainApps ;
+    	return refreshInstalledApplications( pApps ) ;
     	
     }
 
