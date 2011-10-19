@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import android.util.Log;
+
 import parent.guard.model.AndroidAsset;
 import parent.guard.utility.ComponentParser;
 
@@ -13,11 +15,11 @@ public class LogcatReader extends Thread {
   private static final int BUFFER_SIZE = 1024;
   
   private Process mProcess;
-  private OnActivityResumeListener mOnActivityResumeListener;
+  private OnActivityLaunchListener mOnActivityLaunchListener;
   private AndroidAsset mAndroidAsset;
   
-  public LogcatReader(OnActivityResumeListener pOnActivityResumeListener) {
-    mOnActivityResumeListener = pOnActivityResumeListener;
+  public LogcatReader(OnActivityLaunchListener pOnActivityResumeListener) {
+    mOnActivityLaunchListener = pOnActivityResumeListener;
     mAndroidAsset = new AndroidAsset();
   }
   
@@ -31,6 +33,7 @@ public class LogcatReader extends Thread {
       while((tLineReader = tBufferedReader.readLine()) != null) {
         checkLaunchingEvent(tLineReader.trim());
       }
+      Log.d("LogcatReader", "Stoping ...");
     } catch(IOException e) {
       e.printStackTrace();
     }
@@ -39,7 +42,7 @@ public class LogcatReader extends Thread {
   private synchronized void checkLaunchingEvent(String pComponent) {
     ComponentParser tComponentParser = ComponentParser.getDefault();
     if(tComponentParser.parser(pComponent, mAndroidAsset)) {
-      mOnActivityResumeListener.onResume(mAndroidAsset);
+      mOnActivityLaunchListener.onPause(mAndroidAsset);
     }
   }
 }

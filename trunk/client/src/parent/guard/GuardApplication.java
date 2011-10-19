@@ -12,6 +12,7 @@ public class GuardApplication extends Application {
     super.onCreate();
     sGuardApplication = this;
     ServiceLocator.initilize(sGuardApplication);
+    startWatcher();
   }
 
   @Override

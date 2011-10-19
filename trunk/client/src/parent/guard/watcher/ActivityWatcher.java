@@ -1,5 +1,7 @@
 package parent.guard.watcher;
 
+import parent.guard.Locker;
+import parent.guard.activity.BaseActivity;
 import parent.guard.model.AndroidAsset;
 import android.app.Service;
 import android.content.Context;
@@ -10,8 +12,15 @@ public class ActivityWatcher extends Service {
   private Context mContext;
   private LogcatReader mLogcatReader;
   
-  private OnActivityResumeListener mListener = new OnActivityResumeListener() {
-    public void onResume(AndroidAsset pAndroidAsset) {
+  private OnActivityLaunchListener mListener = new OnActivityLaunchListener() {
+    public void onPause(AndroidAsset pAndroidAsset) {
+      Intent tIntent = new Intent(ActivityWatcher.this, Locker.class);
+      tIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+      tIntent.putExtra(BaseActivity.KEY_PACKAGE_NAME,
+          pAndroidAsset.getPackageName());
+      tIntent.putExtra(BaseActivity.KEY_ACTIVITY_NAME,
+          pAndroidAsset.getActivityName());
+      mContext.startActivity(tIntent);
     }
   };
 

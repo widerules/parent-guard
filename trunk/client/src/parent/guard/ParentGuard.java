@@ -1,13 +1,10 @@
 package parent.guard;
 
-import android.app.Activity;
-import android.os.Bundle;
+import parent.guard.activity.AssetListActivity;
 
-public class ParentGuard extends Activity {
-  
+public class ParentGuard extends AssetListActivity {
   @Override
-  public void onCreate(Bundle pBundle) {
-    super.onCreate(pBundle);
-    setContentView(R.layout.main);
+  protected void setListContentView() {
+    this.setContentView(R.layout.activity_list);
   }
 }
