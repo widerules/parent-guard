@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, ParentGuard!</string>
-    <string name="app_name">Parent Guard</string>
+    <string name="activity_guard">Parent Guard</string>
+    <string name="activity_locker">Parent Guard Locker</string>
+    <string name="message_loading">Loading ...</string>
+    <string name="message_unlocking">Draw pattern to unlock ...</string>
 </resources>

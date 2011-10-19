@@ -19,7 +19,7 @@ public abstract class ResultContainer {
     return mAsynchResponse;
   }
   
-  public void setDownloaded(AsynchResponse pAsynchResponse) {
+  public void setResult(AsynchResponse pAsynchResponse) {
     mAsynchResponse = pAsynchResponse;
   }
   
