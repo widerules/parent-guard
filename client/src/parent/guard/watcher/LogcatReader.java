@@ -42,7 +42,7 @@ public class LogcatReader extends Thread {
   private synchronized void checkLaunchingEvent(String pComponent) {
     ComponentParser tComponentParser = ComponentParser.getDefault();
     if(tComponentParser.parser(pComponent, mAndroidAsset)) {
-      mOnActivityLaunchListener.onPause(mAndroidAsset);
+      mOnActivityLaunchListener.onResume(mAndroidAsset);
     }
   }
 }

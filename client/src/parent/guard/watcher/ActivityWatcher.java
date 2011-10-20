@@ -13,7 +13,7 @@ public class ActivityWatcher extends Service {
   private LogcatReader mLogcatReader;
   
   private OnActivityLaunchListener mListener = new OnActivityLaunchListener() {
-    public void onPause(AndroidAsset pAndroidAsset) {
+    public void onResume(AndroidAsset pAndroidAsset) {
       Intent tIntent = new Intent(ActivityWatcher.this, Locker.class);
       tIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
       tIntent.putExtra(BaseActivity.KEY_PACKAGE_NAME,
