@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="parent.guard" android:versionCode="1" android:versionName="1.0">
+  package="parent.guard"
+  android:versionCode="32"
+  android:versionName="0.1" >
   <uses-permission android:name="android.permission.READ_LOGS" />
-  <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-  <uses-permission android:name="android.permission.RESTART_PACKAGES" />
   <uses-sdk android:minSdkVersion="3" />
-  <application android:icon="@drawable/guard" android:label="@string/activity_guard"
-    android:name=".GuardApplication">
-    <activity android:name=".ParentGuard" android:label="@string/activity_guard">
-      <intent-filter>
+  <application
+    android:icon="@drawable/guard"
+    android:label="@string/activity_guard"
+    android:name=".GuardApplication" >
+    <activity
+      android:label="@string/activity_guard"
+      android:name=".ParentGuard" >
+      <intent-filter >
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".Locker" android:label="@string/activity_locker" />
-    <service android:name=".watcher.ActivityWatcher"
-      android:enabled="true">
+    <activity
+      android:configChanges="keyboardHidden|orientation"
+      android:label="@string/activity_locker"
+      android:launchMode="singleTop"
+      android:name=".Locker"
+      android:screenOrientation="portrait"
+      android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+      android:label="@string/activity_preference"
+      android:launchMode="singleTop"
+      android:name=".GuardPreference" />
+    <activity
+      android:configChanges="keyboardHidden|orientation"
+      android:label="@string/activity_pattern_drawer"
+      android:launchMode="singleTop"
+      android:name=".PatternDrawer"
+      android:screenOrientation="portrait" />
+    <activity
+      android:label="@string/activity_pattern_helper"
+      android:launchMode="singleTop"
+      android:name=".PatternHelper" />
+    <activity
+      android:label="@string/activity_pattern_helper"
+      android:launchMode="singleTop"
+      android:name=".PatternExample" />
+    <service
+      android:enabled="true"
+      android:name=".watcher.ActivityWatcher" >
     </service>
-    <receiver android:name=".system.EventReceiver"
-      android:enabled="true">
-      <intent-filter>
+    <receiver
+      android:enabled="true"
+      android:name=".system.EventReceiver" >
+      <intent-filter >
         <action android:name="android.intent.action.BOOT_COMPLETED" />
       </intent-filter>
     </receiver>

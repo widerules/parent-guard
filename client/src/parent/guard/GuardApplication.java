@@ -4,6 +4,7 @@ import parent.guard.watcher.ActivityWatcher;
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.util.Log;
 
 public class GuardApplication extends Application {
   private static GuardApplication sGuardApplication;
@@ -23,6 +24,12 @@ public class GuardApplication extends Application {
   
   public static GuardApplication getGuardApplication() {
     return sGuardApplication;
+  }
+  
+  public static void debug(String pMessage) {
+    if(ServiceLocator.getSystemService().getLogEnabled()) {
+      Log.d("ParentGuard", pMessage);
+    }
   }
   
   public void startWatcher() {

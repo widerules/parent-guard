@@ -17,6 +17,11 @@ public class PackageDetector {
   private Context mContext;
   private PackageManager mPackageManager;
   
+  private static final String[] WICKED_PERMISSIONS = {
+    "android.permission.RESTART_PACKAGES",
+    "android.permission.KILL_BACKGROUND_PROCESSES"
+  };
+  
   public PackageDetector(Context pContext) {
     mContext = pContext;
     mPackageManager = mContext.getPackageManager();
@@ -32,8 +37,8 @@ public class PackageDetector {
     
     for(ResolveInfo tResolveInfo : tResolveInfos) {
       ActivityInfo tActivityInfo = tResolveInfo.activityInfo;
-      String tActivityName = tActivityInfo.name;
       String tPackageName = tActivityInfo.packageName;
+      String tActivityName = tActivityInfo.name;
       String tLabel = tActivityInfo.loadLabel(mPackageManager).toString();
       Drawable tIcon = tActivityInfo.loadIcon(mPackageManager);
       AndroidAsset tAndroidAsset = new AndroidAsset(tActivityName, 
@@ -46,10 +51,21 @@ public class PackageDetector {
     ComponentName tComponent = new ComponentName(pPackageName, pActivityName);
     Intent tIntent = new Intent(Intent.ACTION_MAIN);
     tIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+    tIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     List<ResolveInfo> tResolveInfos = mPackageManager.queryIntentActivityOptions(
         tComponent, null, tIntent, PackageManager.PERMISSION_GRANTED);
     
     return (tResolveInfos.size() > 0);
+  }
+  
+  public boolean isWickedApplication(String pPackageName) {
+    for(String tPermission : WICKED_PERMISSIONS) {
+      int tStatus = mPackageManager.checkPermission(tPermission, pPackageName);
+      if(tStatus == PackageManager.PERMISSION_GRANTED) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public Drawable getIcon(String pActivityName, String pPackageName) {

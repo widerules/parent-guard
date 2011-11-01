@@ -60,7 +60,7 @@ public class AssetAdapter extends BaseAdapter {
     AndroidAsset tAndroidAsset = mAndroidAssets.get(pPosition);
     Drawable tIcon = tAndroidAsset.getIcon();
     String tLabel = tAndroidAsset.getLabel();
-    boolean tBlock = false;
+    boolean tBlock = true;
     if(tIcon == null) {
       tAssetHolder.icon.setImageResource(R.drawable.application_unknown);
     } else {
