@@ -1,41 +1,57 @@
 package parent.guard;
 
 import parent.guard.activity.BaseActivity;
+import parent.guard.activity.PatternActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Locker extends BaseActivity {
+public class Locker extends PatternActivity {
   private String mPackageName;
   private String mActivityName;
-  private ImageView mImageView;
-  private TextView mTextView;
-  
+  private ImageView mIcon;
+  private TextView mLabel;
+  private TextView mMessage;
+
   @Override
-  protected void onCreate(Bundle pBundle) {
-    super.onCreate(pBundle);
+  public void onPatternDetected(String pPattern) {
+    if(getPatternService().isPatternCorrected(pPattern)) {
+      setResult(Activity.RESULT_OK);
+      finish();
+    } else {
+      mPatternView.notifyWrongPattern();
+      mMessage.setText(R.string.message_pattern_error);
+    }
+  }
+
+  @Override
+  public void setPatternView() {
     setContentView(R.layout.activity_locker);
-    mImageView = (ImageView) findViewById(R.id.asset_icon);
-    mTextView = (TextView) findViewById(R.id.asset_label);
+    mIcon = (ImageView) findViewById(R.id.locker_icon);
+    mLabel = (TextView) findViewById(R.id.locker_label);
+    mMessage = (TextView) findViewById(R.id.pattern_message);
     
     mPackageName = getIntent().getStringExtra(BaseActivity.KEY_PACKAGE_NAME);
     mActivityName = getIntent().getStringExtra(BaseActivity.KEY_ACTIVITY_NAME);
     
-    if(ParentGuard.class.getPackage().getName().equals(mPackageName) && 
-        ParentGuard.class.getName().equals(mActivityName)) {
-      finish();
-    }
-    
     Drawable tIcon = getPackageDetector().getIcon(mActivityName, mPackageName);
     if(tIcon != null) {
-      mImageView.setImageDrawable(tIcon);
+      mIcon.setImageDrawable(tIcon);
     }
     String tLabel = getPackageDetector().getLabel(mActivityName, mPackageName);
     if(tLabel != null) {
-      mTextView.setText(tLabel);
+      mLabel.setText(tLabel);
+    }
+  }
+
+  @Override
+  public void onPatternViewLaunched() {
+    if(!getSystemService().getProtected()) {
+      GuardApplication.debug("no pattern to block applications");
+      finish();
     }
   }
 

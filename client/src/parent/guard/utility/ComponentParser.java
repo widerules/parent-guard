@@ -22,6 +22,10 @@ public class ComponentParser {
     "categories=\\{([a-zA-Z\\.\\_\\$0-9]+)\\}";
   private static final String PATTERN_CATEGORIES_4 = 
     "cat=\\[([a-zA-Z\\.\\_\\$0-9]+)\\]";
+  private static final String PATTERN_FLAGS_3 =
+    "flags=([0][x][$0-9]+)";
+  private static final String PATTERN_FLAGS_4 =
+    "flg=([0][x][$0-9]+)";
   private static final String PATTERN_COMPONENT_3 = 
     "comp=\\{([a-zA-Z\\.\\_\\$0-9]+)\\/([a-zA-Z\\.\\_\\$0-9]+)\\}";
   private static final String PATTERN_COMPONENT_4 = 
@@ -54,8 +58,10 @@ public class ComponentParser {
       boolean tIsLauncher = (Intent.CATEGORY_LAUNCHER.equals(tCategories) || 
           (tCategories == null));
       boolean tIsActionMain = Intent.ACTION_MAIN.equals(getAction(pComponent));
+      int tFlags = getFlags(pComponent);
+      boolean tIsNewTask = ((tFlags & Intent.FLAG_ACTIVITY_NEW_TASK) > 0);
       
-      if(tIsActionMain && tIsLauncher) {
+      if(tIsActionMain && tIsLauncher && tIsNewTask) {
         String tComponentValue = getComponent(pComponent);
         String[] tComponents = tComponentValue.split(COMPONENT_SPLIT);
         String tPackageName = tComponents[0];
@@ -111,6 +117,27 @@ public class ComponentParser {
       }
     }
     return null;
+  }
+  
+  public int getFlags(String pComponent) {
+    if(Build.VERSION.SDK.equals("3")) {
+      Pattern tPattern = Pattern.compile(PATTERN_FLAGS_3);
+      Matcher tMatcher = tPattern.matcher(pComponent);
+      boolean tHasFound = tMatcher.find();
+      if(tHasFound) {
+        String tComponent = tMatcher.group();
+        return Integer.parseInt(tComponent.substring(8), 16);
+      }
+    } else {
+      Pattern tPattern = Pattern.compile(PATTERN_FLAGS_4);
+      Matcher tMatcher = tPattern.matcher(pComponent);
+      boolean tHasFound = tMatcher.find();
+      if(tHasFound) {
+        String tComponent = tMatcher.group();
+        return Integer.parseInt(tComponent.substring(6), 16);
+      }
+    }
+    return 0;
   }
   
   public String getComponent(String pComponent) {
