@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="activity_guard">Parent Guard</string>
-    <string name="activity_locker">Parent Guard Locker</string>
-    <string name="message_loading">Loading ...</string>
-    <string name="message_unlocking">Draw pattern to unlock ...</string>
+  <string name="activity_guard">Parent Guard</string>
+  <string name="activity_locker">Parent Guard Locker</string>
+  <string name="activity_preference">Preferences</string>
+  <string name="activity_pattern_drawer">Unlock Pattern</string>
+  <string name="activity_pattern_helper">Pattern Helper</string>
+  <string name="helper_title">Securing Your Applications</string>
+  <string name="helper_body"><font size="16">Protect your applications from
+    unauthorized use by creating a personal screen unlock pattern.\n
+    <font height="16">\n</font><b>1</b>
+    \u00A0 On the next screen, watch while an example pattern is drawn.\n
+    <font height="16">\n</font><b>2</b>
+    \u00A0 When ready, draw your own personal unlock pattern. Experiment with 
+    different patterns but connect at least four dots.\n
+    <font height="16">\n</font><b>3</b>
+    \u00A0 Redraw your pattern to confirm.\n
+    <font height="16">\n</font><b>Ready to start? Select \"Next\"</b>.\n
+    <font height="16">\n</font>To leave your phone unprotected, select \"Cancel\".
+    </font>
+  </string>
+  <string name="example_title">Example Pattern</string>
+  <string name="example_body"><font size="16">Connect at least four dots.\n
+    <font height="16">\n</font>Select \"Next\" when you\'re ready to draw your
+    own pattern.\n</font>
+  </string>
+  <string name="message_loading">Loading ...</string>
+  <string name="message_unlock">Draw your pattern to unlock</string>
+  <string name="message_pattern_password">Confirm saved pattern</string>
+  <string name="message_pattern_draw">Draw your unlock pattern</string>
+  <string name="message_pattern_recorded">Pattern Recorded</string>
+  <string name="message_pattern_confirmed">Your new pattern is</string>
+  <string name="message_pattern_error">Error, please try again</string>
+  <string name="message_pattern_tooshort">Connect at least 4 dots, Try again</string>
+  <string name="message_pattern_different">Draw a different pattern, Try again</string>
+  <string name="message_pattern_confirm">Draw pattern again to confirm</string>
+  <string name="menu_preferences">Preferences</string>
+  <string name="menu_help">Help</string>
+  <string name="button_cancel">Cancel</string>
+  <string name="button_retry">Retry</string>
+  <string name="button_continue">Continue</string>
+  <string name="button_confirm">Confirm</string>
+  <string name="button_next">Next</string>
 </resources>
