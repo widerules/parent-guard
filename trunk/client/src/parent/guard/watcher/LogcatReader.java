@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import android.util.Log;
-
 import parent.guard.model.AndroidAsset;
 import parent.guard.utility.ComponentParser;
 
@@ -33,7 +31,6 @@ public class LogcatReader extends Thread {
       while((tLineReader = tBufferedReader.readLine()) != null) {
         checkLaunchingEvent(tLineReader.trim());
       }
-      Log.d("LogcatReader", "Stoping ...");
     } catch(IOException e) {
       e.printStackTrace();
     }
