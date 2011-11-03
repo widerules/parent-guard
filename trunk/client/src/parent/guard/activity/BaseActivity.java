@@ -6,6 +6,7 @@ import parent.guard.PatternHelper;
 import parent.guard.ServiceLocator;
 import parent.guard.GuardPreference;
 import parent.guard.content.PackageDetector;
+import parent.guard.service.AssetService;
 import parent.guard.service.SystemService;
 import android.app.Activity;
 import android.content.Context;
@@ -59,5 +60,9 @@ public abstract class BaseActivity extends Activity {
   
   protected SystemService getSystemService() {
     return ServiceLocator.getSystemService();
+  }
+  
+  protected AssetService getAssetService() {
+    return ServiceLocator.getAssetService();
   }
 }
