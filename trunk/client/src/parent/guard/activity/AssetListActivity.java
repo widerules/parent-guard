@@ -1,6 +1,5 @@
 package parent.guard.activity;
 
-import parent.guard.GuardApplication;
 import parent.guard.R;
 import parent.guard.model.AndroidAsset;
 import parent.guard.task.GuardRunnable;

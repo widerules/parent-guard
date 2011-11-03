@@ -44,7 +44,7 @@ public class BaseService {
   }
   
   protected boolean getRestrictionPreferenceAsBoolean(String pKey) {
-    return getSharedPreferences(KEY_RESTRICTION).getBoolean(pKey, false);
+    return getSharedPreferences(KEY_RESTRICTION).getBoolean(pKey, true);
   }
   
   protected void doHttpGet() {
