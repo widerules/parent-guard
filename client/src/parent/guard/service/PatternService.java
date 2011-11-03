@@ -15,20 +15,20 @@ public class PatternService extends BaseService {
   private final static String HEX = "0123456789ABCDEF";
   
   public boolean setPatternHelped() {
-    return setPreference(KEY_PATTERN_HELPED, true);
+    return setPatternPreference(KEY_PATTERN_HELPED, true);
   }
   
   public boolean getPatternHelped() {
-    return getPreferenceAsBoolean(KEY_PATTERN_HELPED);
+    return getPatternPreferenceAsBoolean(KEY_PATTERN_HELPED);
   }
   
   public boolean setPattern(String pPattern) {
     String tEncryptedPattern = encryptString(pPattern);
-    return setPreference(KEY_SECURITY_PATTERN, tEncryptedPattern);
+    return setPatternPreference(KEY_SECURITY_PATTERN, tEncryptedPattern);
   }
   
   public boolean isPatternCorrected(String pPattern) {
-    String tEncryptedPattern = getPreferenceAsString(KEY_SECURITY_PATTERN);
+    String tEncryptedPattern = getPatternPreferenceAsString(KEY_SECURITY_PATTERN);
     String tPattern = decryptAsString(pPattern, tEncryptedPattern);
     return tPattern.equals(pPattern);
   }

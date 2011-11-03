@@ -53,6 +53,13 @@ public class Locker extends PatternActivity {
       GuardApplication.debug("no pattern to block applications");
       finish();
     }
+    
+    String tComponent = mPackageName + "/" + mActivityName;
+    if(!getAssetService().isAssetRestricted(tComponent)) {
+      GuardApplication.debug("{" + mPackageName + "/" + mActivityName +
+          "} is not restricted");
+      finish();
+    }
   }
 
   @Override

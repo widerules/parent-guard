@@ -60,4 +60,16 @@ public class AndroidAsset {
   public boolean isProhibited() {
     return mIsProhibited;
   }
+  
+  public String getComponentName() {
+    return mPackageName + "/" + mActivityName;
+  }
+  
+  public static AndroidAsset valueOf(Object pObject) {
+    try {
+      return (AndroidAsset) pObject;
+    } catch(ClassCastException e) {
+      return null;
+    }
+  }
 }

@@ -52,6 +52,8 @@ public class AssetAdapter extends BaseAdapter {
       tAssetHolder.icon = (ImageView) tAssetView.findViewById(R.id.asset_icon);
       tAssetHolder.label = (TextView) tAssetView.findViewById(R.id.asset_label);
       tAssetHolder.block = (CheckBox) tAssetView.findViewById(R.id.asset_block);
+      tAssetHolder.block.setFocusable(false);
+      tAssetHolder.block.setClickable(false);
       tAssetView.setTag(tAssetHolder);
     } else {
       tAssetHolder = (AssetHolder) tAssetView.getTag();
@@ -60,7 +62,8 @@ public class AssetAdapter extends BaseAdapter {
     AndroidAsset tAndroidAsset = mAndroidAssets.get(pPosition);
     Drawable tIcon = tAndroidAsset.getIcon();
     String tLabel = tAndroidAsset.getLabel();
-    boolean tBlock = true;
+    String tComponentName = tAndroidAsset.getComponentName();
+    boolean tBlock = getAssetService().isAssetRestricted(tComponentName);
     if(tIcon == null) {
       tAssetHolder.icon.setImageResource(R.drawable.application_unknown);
     } else {
@@ -115,6 +118,12 @@ public class AssetAdapter extends BaseAdapter {
     public void onResponse() {
       setAndroidAssets(mDownloadedAssets);
     }
+  }
+  
+  public void setRestricted(String pComponentName) {
+    boolean tIsRestricted = getAssetService().isAssetRestricted(pComponentName);
+    getAssetService().setRestricted(pComponentName, !tIsRestricted);
+    notifyDataSetChanged();
   }
   
   private AssetService getAssetService() {

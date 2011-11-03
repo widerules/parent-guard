@@ -6,34 +6,45 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class BaseService {
-  
+  private static final String KEY_PATTERN = "preference_pattern";
+  private static final String KEY_RESTRICTION = "preference_restriction";
   protected GuardApplication getGuardApplication() {
     return GuardApplication.getGuardApplication();
   }
   
-  private SharedPreferences getSharedPreferences() {
-    return getGuardApplication().getSharedPreferences("pattern",
+  private SharedPreferences getSharedPreferences(String pName) {
+    return getGuardApplication().getSharedPreferences(pName,
         Context.MODE_PRIVATE);
   }
   
-  protected boolean setPreference(String pKey, String pValue) {
-    Editor editor = getSharedPreferences().edit();
+  protected boolean setPatternPreference(String pKey, String pValue) {
+    Editor editor = getSharedPreferences(KEY_PATTERN).edit();
     editor.putString(pKey, pValue);
     return editor.commit();
   }
   
-  protected boolean setPreference(String pKey, boolean pValue) {
-    Editor editor = getSharedPreferences().edit();
+  protected boolean setPatternPreference(String pKey, boolean pValue) {
+    Editor editor = getSharedPreferences(KEY_PATTERN).edit();
     editor.putBoolean(pKey, pValue);
     return editor.commit();
   }
   
-  protected String getPreferenceAsString(String pKey) {
-    return getSharedPreferences().getString(pKey, "");
+  protected boolean setRestrictionPreference(String pKey, boolean pValue) {
+    Editor editor = getSharedPreferences(KEY_RESTRICTION).edit();
+    editor.putBoolean(pKey, pValue);
+    return editor.commit();
   }
   
-  protected boolean getPreferenceAsBoolean(String pKey) {
-    return getSharedPreferences().getBoolean(pKey, false);
+  protected String getPatternPreferenceAsString(String pKey) {
+    return getSharedPreferences(KEY_PATTERN).getString(pKey, "");
+  }
+  
+  protected boolean getPatternPreferenceAsBoolean(String pKey) {
+    return getSharedPreferences(KEY_PATTERN).getBoolean(pKey, false);
+  }
+  
+  protected boolean getRestrictionPreferenceAsBoolean(String pKey) {
+    return getSharedPreferences(KEY_RESTRICTION).getBoolean(pKey, false);
   }
   
   protected void doHttpGet() {

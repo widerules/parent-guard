@@ -1,19 +1,33 @@
 package parent.guard.activity;
 
+import parent.guard.GuardApplication;
 import parent.guard.R;
+import parent.guard.model.AndroidAsset;
 import parent.guard.task.GuardRunnable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public abstract class AssetListActivity extends BaseActivity
-    implements OnAssetLoadListener {
+    implements OnAssetLoadListener, OnItemClickListener {
   protected AssetAdapter mAssetAdapter;
   protected ListView mListView;
   protected LinearLayout mLoadingSplash;
   
+  public void onItemClick(AdapterView<?> pAdapterView, View pView,
+      int pPosition, long pId) {
+    AndroidAsset tAndroidAsset = AndroidAsset.valueOf(pAdapterView
+        .getItemAtPosition(pPosition));
+    if(tAndroidAsset != null) {
+      String tComponentName = tAndroidAsset.getComponentName();
+      mAssetAdapter.setRestricted(tComponentName);
+    }
+  }
+
   private static final int MENU_PREFERENCES = Menu.FIRST;
   private static final int MENU_HELP = Menu.FIRST + 1;
   
@@ -48,6 +62,7 @@ public abstract class AssetListActivity extends BaseActivity
   protected void setActivityView() {
     setListContentView();
     mListView = (ListView) findViewById(R.id.list_guard);
+    mListView.setOnItemClickListener(AssetListActivity.this);
     mAssetAdapter = new AssetAdapter(mContext, AssetListActivity.this);
     mListView.setAdapter(mAssetAdapter);
     mLoadingSplash = (LinearLayout) findViewById(R.id.splash_loading);
