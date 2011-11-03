@@ -35,10 +35,10 @@ Client Backlog
     * ~~PGC0504 notify the locker module to handle it~~
 
   * PGC06 retrieve the content of installed applications
-    * ~~PGC0601 create a global instance of PackageManager class
-    * ~~PGC0602 retrieve the content of installed applications
-    * ~~PGC0603 retrieve the content of the application according to its activity name and package name
-    * ~~PGC0604 check whether the given application is dangerous and can kill or stop Parent Guard
+    * ~~PGC0601 create a global instance of PackageManager class~~
+    * ~~PGC0602 retrieve the content of installed applications~~
+    * ~~PGC0603 retrieve the content of the application according to its activity name and package name~~
+    * ~~PGC0604 check whether the given application is dangerous and can kill or stop Parent Guard~~
 
   * PGC07 provide methods to support all the other modules
     * ~~PGC0701 parse the activity name and package name of the application being launched from captured system log~~
