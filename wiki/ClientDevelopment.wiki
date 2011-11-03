@@ -2,7 +2,7 @@
 Client Backlog
 
   * PGC01 maintain the launch permit of installed applications
-    * PGC0101 get the list of installed applications
+    * ~~PGC0101 get the list of installed applications~~
     * PGC0102 let users to decide which applications are prohibited to constrained users
     * PGC0103 save the list of prohibited applications, identified by their activity name and package name
     * PGC0104 get the list of admitted applications to constrained users
@@ -36,9 +36,9 @@ Client Backlog
 
   * PGC06 retrieve the content of installed applications
     * ~~PGC0601 create a global instance of PackageManager class~~
-    * ~~PGC0602 retrieve the content of installed applications~~
+    * PGC0602 retrieve the content of installed applications
     * ~~PGC0603 retrieve the content of the application according to its activity name and package name~~
-    * ~~PGC0604 check whether the given application is dangerous and can kill or stop Parent Guard~~
+    * PGC0604 check whether the given application is dangerous and can kill or stop Parent Guard
 
   * PGC07 provide methods to support all the other modules
     * ~~PGC0701 parse the activity name and package name of the application being launched from captured system log~~
