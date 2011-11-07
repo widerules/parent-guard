@@ -630,9 +630,9 @@ public final class DataTransferProtocol {
   public interface AppRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional int64 device_Id = 1 [default = -1];
+    // optional string device_Id = 1 [default = "-1"];
     boolean hasDeviceId();
-    long getDeviceId();
+    String getDeviceId();
     
     // optional string child_birth = 2;
     boolean hasChildBirth();
@@ -677,14 +677,36 @@ public final class DataTransferProtocol {
     }
     
     private int bitField0_;
-    // optional int64 device_Id = 1 [default = -1];
+    // optional string device_Id = 1 [default = "-1"];
     public static final int DEVICE_ID_FIELD_NUMBER = 1;
-    private long deviceId_;
+    private java.lang.Object deviceId_;
     public boolean hasDeviceId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public long getDeviceId() {
-      return deviceId_;
+    public String getDeviceId() {
+      java.lang.Object ref = deviceId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          deviceId_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getDeviceIdBytes() {
+      java.lang.Object ref = deviceId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        deviceId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     
     // optional string child_birth = 2;
@@ -741,7 +763,7 @@ public final class DataTransferProtocol {
     }
     
     private void initFields() {
-      deviceId_ = -1L;
+      deviceId_ = "-1";
       childBirth_ = "";
       apps_ = java.util.Collections.emptyList();
     }
@@ -758,7 +780,7 @@ public final class DataTransferProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, deviceId_);
+        output.writeBytes(1, getDeviceIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getChildBirthBytes());
@@ -777,7 +799,7 @@ public final class DataTransferProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, deviceId_);
+          .computeBytesSize(1, getDeviceIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -912,7 +934,7 @@ public final class DataTransferProtocol {
       
       public Builder clear() {
         super.clear();
-        deviceId_ = -1L;
+        deviceId_ = "-1";
         bitField0_ = (bitField0_ & ~0x00000001);
         childBirth_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1056,9 +1078,9 @@ public final class DataTransferProtocol {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              deviceId_ = input.readInt64();
+              deviceId_ = input.readBytes();
               break;
             }
             case 18: {
@@ -1078,25 +1100,40 @@ public final class DataTransferProtocol {
       
       private int bitField0_;
       
-      // optional int64 device_Id = 1 [default = -1];
-      private long deviceId_ = -1L;
+      // optional string device_Id = 1 [default = "-1"];
+      private java.lang.Object deviceId_ = "-1";
       public boolean hasDeviceId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public long getDeviceId() {
-        return deviceId_;
+      public String getDeviceId() {
+        java.lang.Object ref = deviceId_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          deviceId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setDeviceId(long value) {
-        bitField0_ |= 0x00000001;
+      public Builder setDeviceId(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         deviceId_ = value;
         onChanged();
         return this;
       }
       public Builder clearDeviceId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        deviceId_ = -1L;
+        deviceId_ = getDefaultInstance().getDeviceId();
         onChanged();
         return this;
+      }
+      void setDeviceId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        deviceId_ = value;
+        onChanged();
       }
       
       // optional string child_birth = 2;
@@ -1355,7 +1392,7 @@ public final class DataTransferProtocol {
       "perty\022\030\n\020app_package_name\030\001 \001(\t\022\031\n\021app_a" +
       "ctivity_name\030\002 \001(\t\022\020\n\010app_name\030\003 \001(\t\022\025\n\r" +
       "is_restricted\030\004 \001(\010\"T\n\nAppRequest\022\025\n\tdev" +
-      "ice_Id\030\001 \001(\003:\002-1\022\023\n\013child_birth\030\002 \001(\t\022\032\n" +
+      "ice_Id\030\001 \001(\t:\002-1\022\023\n\013child_birth\030\002 \001(\t\022\032\n" +
       "\004apps\030\003 \003(\0132\014.AppProperty"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
