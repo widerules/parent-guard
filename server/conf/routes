@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       DataHandler.index
+
+GET     /droptable                              DataHandler.dropAllTables
+GET     /dropdata                               DataHandler.dropData
+
+POST    /receive                                DataHandler.onReceive
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
