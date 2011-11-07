@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -13,6 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import parent.guard.utility.DataTransferProtocol.AppProperty;
 import parent.guard.utility.DataTransferProtocol.AppRequest;
 
 
@@ -59,5 +61,33 @@ public class HttpRequestService {
     } catch (IOException e) {
         // TODO Auto-generated catch block
     }
-} 
+  }
+  
+  public void testServer(){
+    AppRequest appRequest = 
+      AppRequest.newBuilder()
+      .setDeviceId("123")
+      .setChildBirth("2001")
+      .addApps(
+          AppProperty.newBuilder()
+          .setAppName("appjoy")
+          .setAppPackageName("swin.appjoy")
+          .setAppActivityName("laucher")
+          .setIsRestricted(false))
+      .addApps(
+          AppProperty.newBuilder()
+          .setAppName("memfree")
+          .setAppPackageName("swin.memory")
+          .setAppActivityName("launcher")
+          .setIsRestricted(true))
+      .build();
+    
+    try {
+      URI uri = new URI("http://10.0.2.2:9000/receive");
+      executeHttpPost(uri, appRequest);
+    } catch(URISyntaxException e) {
+      e.printStackTrace();
+    }
+    
+  }
 }
