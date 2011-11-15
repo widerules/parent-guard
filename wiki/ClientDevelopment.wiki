@@ -42,4 +42,12 @@ Client Backlog
 
   * PGC07 provide methods to support all the other modules
     * ~~PGC0701 parse the activity name and package name of the application being launched from captured system log~~
-    * PGC0702 data convert between HTTP responses and the list of admitted applications 
+    * PGC0702 data convert between HTTP responses and the list of admitted applications
+ 
+  * PGC08 user interface design and implementation
+    * PGC0801 maintain all icons
+    * PGC0802 switch all activities in a global tab activity
+    * PGC0803 the user interface design of preferences
+    * PGC0804 the user interface design of security
+    * PGC0805 the user interface design of recommendation
+    * PGC0806 the user interface design of application restriction
