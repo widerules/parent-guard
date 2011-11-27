@@ -3,6 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/GoogleProtoBuf"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/GoogleProtoBuf">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/opt/extra-java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/opt/extra-java/protobuf-java-2.4.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

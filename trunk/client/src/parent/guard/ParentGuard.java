@@ -17,8 +17,7 @@ public final class ParentGuard extends AssetListActivity {
   }
 
   @Override
-  protected void onActivityResult(int pRequestCode, int pResultCode,
-      Intent pIntent) {
+  protected void onActivityResult(int pRequestCode, int pResultCode, Intent pIntent) {
     super.onActivityResult(pRequestCode, pResultCode, pIntent);
     if(pRequestCode == ACTIVITY_PATTERN_DRAWER) {
       if(pResultCode == RESULT_CANCELED) {

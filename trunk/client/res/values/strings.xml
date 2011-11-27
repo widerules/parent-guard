@@ -41,4 +41,7 @@
   <string name="button_continue">Continue</string>
   <string name="button_confirm">Confirm</string>
   <string name="button_next">Next</string>
+  <string name="activity_homepage">activity_homepage</string>
+  <string name="activity_settings">activity_settings</string>
+  <string name="activity_security">activity_security</string>
 </resources>
