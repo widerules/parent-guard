@@ -9,6 +9,12 @@
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:dividerHeight="1sp"
+    android:visibility="gone" /><ListView
+    android:id="@+id/list_guard"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:dividerHeight="1sp"
     android:visibility="gone" />
   <include layout="@layout/view_loading" />
 </LinearLayout>

@@ -3,6 +3,7 @@
 package parent.guard;
 
 
+
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -17,6 +18,9 @@ public class SettingsActivity extends Activity {
     	setContentView( R.layout.settings_main ) ;
         
         
+        
+        
+    	
         
         
     }
