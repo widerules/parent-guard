@@ -26,12 +26,8 @@ public class ParentMain extends TabActivity {
 		       .setIndicator("Apps", getResources().getDrawable( R.drawable.apps_on ) )
 		       .setContent(new Intent(this, ParentGuard.class))) ;
         
+        
         tabHost.addTab(tabHost.newTabSpec("tab3")
-		       .setIndicator("Security" , getResources().getDrawable( R.drawable.security_on ))
-		       .setContent(new Intent(this, SecurityActivity.class))) ;
-        
-        
-        tabHost.addTab(tabHost.newTabSpec("tab4")
 		       .setIndicator("Settings" , getResources().getDrawable( R.drawable.settings_on ))
 		       .setContent(new Intent(this, SettingsActivity.class))) ;
         
