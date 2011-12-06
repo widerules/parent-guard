@@ -9,12 +9,18 @@ public final class ParentGuard extends AssetListActivity {
     setContentView(R.layout.activity_list);
   }
 
-  @Override
+@Override
+protected void onListLaunched() {
+	
+	
+}
+
+ /* @Override
   protected void onListLaunched() {
     if(!getSystemService().getProtected()) {
-      startPatternDrawer(true);
-    }
-  }
+    	startPatternDrawer(true);
+    	}
+  	}	
 
   @Override
   protected void onActivityResult(int pRequestCode, int pResultCode, Intent pIntent) {
@@ -27,4 +33,6 @@ public final class ParentGuard extends AssetListActivity {
       }
     }
   }
+  */
+  
 }
