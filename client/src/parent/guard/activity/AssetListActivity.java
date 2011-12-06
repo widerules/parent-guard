@@ -17,10 +17,8 @@ public abstract class AssetListActivity extends BaseActivity
   protected ListView mListView;
   protected LinearLayout mLoadingSplash;
   
-  public void onItemClick(AdapterView<?> pAdapterView, View pView,
-      int pPosition, long pId) {
-    AndroidAsset tAndroidAsset = AndroidAsset.valueOf(pAdapterView
-        .getItemAtPosition(pPosition));
+  public void onItemClick(AdapterView<?> pAdapterView, View pView, int pPosition, long pId) {
+    AndroidAsset tAndroidAsset = AndroidAsset.valueOf(pAdapterView.getItemAtPosition(pPosition));
     if(tAndroidAsset != null) {
       String tComponentName = tAndroidAsset.getComponentName();
       mAssetAdapter.setRestricted(tComponentName);
