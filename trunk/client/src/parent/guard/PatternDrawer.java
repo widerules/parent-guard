@@ -145,6 +145,7 @@ public class PatternDrawer extends PatternActivity implements OnClickListener {
       if(!getSystemService().getProtected()) {
         getSystemService().setProtected();
       }
+      
       if(!getPatternService().getPatternHelped()) {
         getPatternService().setPatternHelped();
       }
