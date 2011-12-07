@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <ScrollView
+      android:layout_width="fill_parent"
+      android:layout_height="0sp"
+      android:layout_weight="1" >
+      <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <TextView
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="16sp"
+          android:text="@string/settings_page_example_header"
+          android:textAppearance="?android:textAppearanceMedium" />
+        <View
+          android:layout_width="fill_parent"
+          android:layout_height="1sp"
+          android:background="@android:drawable/divider_horizontal_dark" />
+
+      </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/panel_helper" />
+  </LinearLayout>
+
+  <ImageView
+      android:id="@+id/imageView1"
+      android:layout_width="wrap_content"
+      android:layout_height="300dp"
+      android:layout_gravity="center"
+      android:src="@drawable/settings_page_example" />
+
+  <TextView
+      android:id="@+id/textView1"
+      android:layout_width="wrap_content"
+      android:layout_height="100dp"
+      android:layout_gravity="bottom"
+      android:text="@string/settings_page_example" />
+
+</FrameLayout>

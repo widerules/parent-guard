@@ -44,6 +44,30 @@
       android:name=".Locker"
       android:screenOrientation="portrait"
       android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+      android:configChanges="keyboardHidden|orientation"
+      android:label="@string/activity_locker"
+      android:launchMode="singleTop"
+      android:name=".HomePageExample"
+      android:screenOrientation="portrait"
+      android:theme="@android:style/Theme.NoTitleBar" />
+    
+    <activity
+      android:configChanges="keyboardHidden|orientation"
+      android:label="@string/activity_locker"
+      android:launchMode="singleTop"
+      android:name=".AppsPageExample"
+      android:screenOrientation="portrait"
+      android:theme="@android:style/Theme.NoTitleBar" />    
+    
+    <activity
+      android:configChanges="keyboardHidden|orientation"
+      android:label="@string/activity_locker"
+      android:launchMode="singleTop"
+      android:name=".SettingsPageExample"
+      android:screenOrientation="portrait"
+      android:theme="@android:style/Theme.NoTitleBar" />
     
     <activity
       android:label="@string/activity_preference"

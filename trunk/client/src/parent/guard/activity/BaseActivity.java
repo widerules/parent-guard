@@ -33,6 +33,9 @@ public abstract class BaseActivity extends Activity {
   protected static final int ACTIVITY_PATTERN_DRAWER = 10;
   protected static final int ACTIVITY_PATTERN_HELPER = 11;
   protected static final int ACTIVITY_PATTERN_EXAMPLE = 12;
+  protected static final int ACTIVITY_HOME_PAGE_EXAMPLE = 13;
+  protected static final int ACTIVITY_APPS_PAGE_EXAMPLE = 14;
+  protected static final int ACTIVITY_SETTINGS_PAGE_EXAMPLE = 15;
   
   protected void startPreferences() {
     startActivity(new Intent(mContext, GuardPreference.class));
