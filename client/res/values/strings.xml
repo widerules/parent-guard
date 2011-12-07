@@ -19,12 +19,18 @@
     <font height="16">\n</font>To leave your phone unprotected, select \"Cancel\".
     </font>
   </string>
+  <string name="home_page_example_header">This is the Home Page.</string>
+  <string name="home_page_example">In order to toggle Parent Guard\'s protection, just touch the lock.</string>
+  <string name="apps_page_example_header">This is the Apps Manager.</string>
+  <string name="apps_page_example">Any app with a green check next to it will require your unlock pattern to be run while Parent Guard is on.</string>
+  <string name="settings_page_example_header">This is the Settings Page.</string>
+  <string name="settings_page_example">From here, you can change your unlock pattern, as well as other personal information.</string>
   <string name="example_title">Example Pattern</string>
   <string name="example_body"><font size="16">Connect at least four dots.\n
     <font height="16">\n</font>Select \"Next\" when you\'re ready to draw your
     own pattern.\n</font>
   </string>
-  <string name="message_loading">Loading ...</string>
+  <string name="message_loading">Loading...</string>
   <string name="message_unlock">Draw your pattern to unlock</string>
   <string name="message_pattern_password">Confirm saved pattern</string>
   <string name="message_pattern_draw">Draw your unlock pattern</string>
