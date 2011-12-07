@@ -23,7 +23,7 @@ public class ParentMain extends TabActivity {
 		       .setContent(new Intent(this, HomePageActivity.class))) ;
        
         tabHost.addTab(tabHost.newTabSpec("tab2")
-		       .setIndicator("Apps", getResources().getDrawable( R.drawable.apps_on ) )
+		       .setIndicator("Blocked Apps", getResources().getDrawable( R.drawable.apps_on ) )
 		       .setContent(new Intent(this, ParentGuard.class))) ;
         
         
