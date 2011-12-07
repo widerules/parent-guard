@@ -4,9 +4,12 @@ package parent.guard;
 import parent.guard.activity.BaseActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.*;
+import android.view.View.OnClickListener;
+import android.widget.*;
+import parent.guard.R;
 
-public class HomePageActivity extends BaseActivity  {
+public class HomePageActivity extends BaseActivity implements OnClickListener {
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +17,8 @@ public class HomePageActivity extends BaseActivity  {
     	if(!getSystemService().getProtected()) {
             startPatternDrawer(true);
           }
+    	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
+        button.setOnClickListener(this);
     }    
     
  @Override
@@ -34,7 +39,22 @@ protected void setActivityView() {
 	
 	setContentView( R.layout.home_main ) ;
 	
+}
+
+//Implement the OnClickListener callback
+public void onClick(View v) {
+	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
 	
+	if(ServiceLocator.getSystemService().getAppToggledOff()) {
+		GuardApplication.getGuardApplication().startWatcher();
+		ServiceLocator.getSystemService().setAppToggledOff(false);
+		button.setImageResource(R.drawable.logo_locked);
+	}
+	else {
+		GuardApplication.getGuardApplication().pauseWatcher();
+		ServiceLocator.getSystemService().setAppToggledOff(true);
+		button.setImageResource(R.drawable.logo_unlocked);
+	}
 }
  
 }

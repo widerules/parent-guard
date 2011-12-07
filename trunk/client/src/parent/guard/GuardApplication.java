@@ -42,4 +42,15 @@ public class GuardApplication extends Application {
       }
     }.start();
   }
+  
+  public void pauseWatcher() {
+	new Thread() {
+	  public void run(){
+	    Intent serviceIntent = new Intent("swin.appjoy.watcher.ActivityWatcher");
+	    serviceIntent.setComponent(new ComponentName(getPackageName(),
+	        ActivityWatcher.class.getName()));
+	    stopService(serviceIntent);
+	   }
+	}.start();
+  }
 }
