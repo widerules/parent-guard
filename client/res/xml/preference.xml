@@ -20,7 +20,9 @@
   <EditTextPreference
       android:key="age"
       android:summary="Age of child"
-      android:title="Age"/>
+      android:title="Age"
+      
+      />
    
   
 </PreferenceScreen>
