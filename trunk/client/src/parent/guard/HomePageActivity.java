@@ -26,8 +26,9 @@ public class HomePageActivity extends BaseActivity implements OnClickListener {
           }
     	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
         button.setOnClickListener(this);
-    }    
-    
+        	
+        }
+           
  @Override
  protected void onActivityResult(int pRequestCode, int pResultCode, Intent pIntent) {
    super.onActivityResult(pRequestCode, pResultCode, pIntent);
@@ -40,6 +41,23 @@ public class HomePageActivity extends BaseActivity implements OnClickListener {
 	   }
    	}	
  }
+protected void onResume() {
+	
+	super.onResume() ;
+	
+	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
+	
+	if(ServiceLocator.getSystemService().getAppToggledOff()) {
+		
+		button.setImageResource(R.drawable.logo_unlocked);
+		
+	}
+	else {
+		
+		button.setImageResource(R.drawable.logo_locked);
+	}
+	
+}
 
 @Override
 protected void setActivityView() {
@@ -48,9 +66,10 @@ protected void setActivityView() {
 
 //Implement the OnClickListener callback
 public void onClick(View v) {
+	
 	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
 	
-	if(ServiceLocator.getSystemService().getAppToggledOff()) {
+	if(ServiceLocator.getSystemService().getAppToggledOff()) {	
 		GuardApplication.getGuardApplication().startWatcher();
 		ServiceLocator.getSystemService().setAppToggledOff(false);
 		button.setImageResource(R.drawable.logo_locked);
