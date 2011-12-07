@@ -14,6 +14,7 @@ public class HomePageActivity extends BaseActivity implements OnClickListener {
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    
     	if(!getSystemService().getProtected()) {
             startPatternDrawer(true);
           }
@@ -36,9 +37,7 @@ public class HomePageActivity extends BaseActivity implements OnClickListener {
 
 @Override
 protected void setActivityView() {
-	
-	setContentView( R.layout.home_main ) ;
-	
+		setContentView( R.layout.home_main ) ;
 }
 
 //Implement the OnClickListener callback
