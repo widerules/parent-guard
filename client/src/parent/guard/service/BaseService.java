@@ -8,6 +8,8 @@ import android.content.SharedPreferences.Editor;
 public class BaseService {
   private static final String KEY_PATTERN = "preference_pattern";
   private static final String KEY_RESTRICTION = "preference_restriction";
+  private static final String KEY_APP_TOGGLED_OFF = "app_toggled_off";
+  
   protected GuardApplication getGuardApplication() {
     return GuardApplication.getGuardApplication();
   }
@@ -29,6 +31,12 @@ public class BaseService {
     return editor.commit();
   }
   
+  protected boolean setToggledPreference(String pKey, boolean pValue) {
+	Editor editor = getSharedPreferences(KEY_APP_TOGGLED_OFF).edit();
+	editor.putBoolean(pKey, pValue);
+	return editor.commit();
+  }
+  
   protected boolean setRestrictionPreference(String pKey, boolean pValue) {
     Editor editor = getSharedPreferences(KEY_RESTRICTION).edit();
     editor.putBoolean(pKey, pValue);
@@ -41,6 +49,10 @@ public class BaseService {
   
   protected boolean getPatternPreferenceAsBoolean(String pKey) {
     return getSharedPreferences(KEY_PATTERN).getBoolean(pKey, false);
+  }
+  
+  protected boolean getToggledPreferenceAsBoolean(String pKey) {
+	return getSharedPreferences(KEY_APP_TOGGLED_OFF).getBoolean(pKey, false);
   }
   
   protected boolean getRestrictionPreferenceAsBoolean(String pKey) {
