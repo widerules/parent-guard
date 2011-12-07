@@ -36,25 +36,6 @@
       android:launchMode="singleTop"
       android:screenOrientation="portrait"
       android:theme="@android:style/Theme.NoTitleBar" />
-     
-     
-     <activity
-      android:label="@string/activity_settings"
-      android:name=".SettingsActivity" 
-      android:configChanges="keyboardHidden|orientation"
-      android:launchMode="singleTop"
-      android:screenOrientation="portrait"
-      android:theme="@android:style/Theme.NoTitleBar" />
-     
-     
-    <activity
-      android:label="@string/activity_security"
-      android:name=".SecurityActivity" 
-      android:configChanges="keyboardHidden|orientation"
-      android:launchMode="singleTop"
-      android:screenOrientation="portrait"
-      android:theme="@android:style/Theme.NoTitleBar" />
-    
     
     <activity
       android:configChanges="keyboardHidden|orientation"

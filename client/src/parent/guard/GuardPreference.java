@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -14,7 +15,8 @@ public class GuardPreference extends PreferenceActivity
   private Context mContext;
   private Preference mPattern;
   private CheckBoxPreference mDebugStatus;
-  
+  private EditTextPreference mEmailPreference ;
+  private EditTextPreference mAgePreference ;
   @Override
   protected void onCreate(Bundle pBundle) {
     super.onCreate(pBundle);
@@ -25,6 +27,8 @@ public class GuardPreference extends PreferenceActivity
     mPattern.setOnPreferenceClickListener(GuardPreference.this);
     mDebugStatus = (CheckBoxPreference) findPreference("debugStatus");
     mDebugStatus.setOnPreferenceClickListener(GuardPreference.this);
+    mEmailPreference = (EditTextPreference) findPreference( "email") ;
+    mAgePreference = (EditTextPreference) findPreference( "age") ;
     boolean tIsLogEnabled = ServiceLocator.getSystemService().getLogEnabled();
     mDebugStatus.setChecked(tIsLogEnabled);
   }
@@ -39,6 +43,14 @@ public class GuardPreference extends PreferenceActivity
       boolean tIsLogEnabled = ServiceLocator.getSystemService().getLogEnabled();
       mDebugStatus.setChecked(!tIsLogEnabled);
       ServiceLocator.getSystemService().setLogEnabled(!tIsLogEnabled);
+    } else if( "email".equals( tPreferenceKey)){
+    	
+    	
+    	
+    }else if( "age".equals( tPreferenceKey)){
+    	
+    	
+    	
     }
     return true;
   }

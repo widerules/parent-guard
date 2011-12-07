@@ -44,4 +44,11 @@
   <string name="activity_homepage">activity_homepage</string>
   <string name="activity_settings">activity_settings</string>
   <string name="activity_security">activity_security</string>
+  
+  <string name="child_age">Child\'s Age</string>
+  <string name="email">Email</string>
+  	
+
+
+
 </resources>

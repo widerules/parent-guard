@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+  
   <Preference
     android:key="lockerPattern"
     android:summary="Draw pattern to unlock application"
     android:title="Unlock Pattern" />
+  
   <CheckBoxPreference
     android:key="debugStatus"
-    android:summary="Display log record for debuging"
+    android:summary="Display log record for debugging"
     android:title="Logger" />
+  
+  <EditTextPreference
+      android:key="email"
+      android:summary="E-mail configured for this application"
+      android:title="E-mail"/>
+	
+  
+  <EditTextPreference
+      android:key="age"
+      android:summary="Age of child"
+      android:title="Age"/>
+   
+  
 </PreferenceScreen>

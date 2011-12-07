@@ -29,7 +29,7 @@ public class ParentMain extends TabActivity {
         
         tabHost.addTab(tabHost.newTabSpec("tab3")
 		       .setIndicator("Settings" , getResources().getDrawable( R.drawable.settings_on ))
-		       .setContent(new Intent(this, SettingsActivity.class))) ;
+		       .setContent(new Intent(this, GuardPreference.class))) ;
         
     }
     
