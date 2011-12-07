@@ -4,6 +4,7 @@ package parent.guard;
 import parent.guard.activity.BaseActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 public class HomePageActivity extends BaseActivity  {
 
@@ -30,7 +31,10 @@ public class HomePageActivity extends BaseActivity  {
 
 @Override
 protected void setActivityView() {
-	setContentView( R.layout.settings_main ) ;
+	
+	setContentView( R.layout.home_main ) ;
+	
+	
 }
  
 }
