@@ -20,7 +20,11 @@ public class LogcatReader extends Thread {
     mOnActivityLaunchListener = pOnActivityResumeListener;
     mAndroidAsset = new AndroidAsset();
   }
-  
+  public void destroy() {
+	  
+	  mProcess.destroy() ;
+	    
+  }
   public void run() {
     try {
       mProcess = Runtime.getRuntime().exec(LOGCAT_CLEAN);
