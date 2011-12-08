@@ -57,7 +57,9 @@ public class ComponentParser {
       boolean tIsLauncher = (Intent.CATEGORY_LAUNCHER.equals(tCategories) || 
           (tCategories == null));
       boolean tIsActionMain = Intent.ACTION_MAIN.equals(getAction(pComponent));  
-      boolean tIsSetting =	"android.settings.SETTINGS".equals(getAction(pComponent));
+      boolean tIsSetting =	"android.settings.SETTINGS".equals(getAction(pComponent))||
+       "android.settings.MANAGE_ALL_APPLICATIONS_SETTINGS".equals(getAction(pComponent))||
+       "android.search.action.GLOBAL_SEARCH".equals(getAction(pComponent));;
       int tFlags = getFlags(pComponent);
       boolean tIsNewTask = ((tFlags & Intent.FLAG_ACTIVITY_NEW_TASK) > 0);
       
