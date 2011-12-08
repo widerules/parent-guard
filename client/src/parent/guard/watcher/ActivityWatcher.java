@@ -39,6 +39,7 @@ public class ActivityWatcher extends Service {
 
   @Override
   public void onDestroy() {
+	  
     super.onDestroy();
     mLogcatReader.destroy() ;
     
