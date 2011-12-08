@@ -15,15 +15,9 @@ public class HomePageActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		if (!getSystemService().getProtected()) {
-
 			startPatternDrawer(true);
-			Intent settingsPageExample = new Intent(mContext,
-					SettingsPageExample.class);
-			startActivityForResult(settingsPageExample, 15);
-			Intent appsPageExample = new Intent(mContext, AppsPageExample.class);
-			startActivityForResult(appsPageExample, 14);
-			Intent homePageExample = new Intent(mContext, HomePageExample.class);
-			startActivityForResult(homePageExample, 13);
+			startHomeExample() ;
+			
 		}
 
 	}
