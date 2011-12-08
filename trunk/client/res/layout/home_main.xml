@@ -11,5 +11,5 @@
             android:layout_height="fill_parent"
             android:layout_gravity="fill"
             android:src="@drawable/logo_locked" />
-
+        
     </LinearLayout>
